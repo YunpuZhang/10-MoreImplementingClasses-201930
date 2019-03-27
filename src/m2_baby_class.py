@@ -115,8 +115,9 @@ class Baby(object):
 
     def feed_baby(self):
         print('Thank you for feeding baby',self.name,'.')
+        self.hour_time=0
 
-    def hour_pass(self):
+    def hour_passes(self):
         self.hour_time=self.hour_time+1
         if self.hour_time==1:
             print('Baby',self.name,'is sleeping')
