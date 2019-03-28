@@ -3,8 +3,8 @@ A   CapitalT   class and functions that use/test it.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Karl.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -20,7 +20,7 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_simple_t()
+    run_test_simple_t()
     # run_test_set_colors()
     # run_test_move_by()
     # run_test_clone()
@@ -115,6 +115,12 @@ class CapitalT(object):
     """
 
     def __init__(self, intersection_center, width, height, letter_thickness):
+        cornor1=rg.Point(intersection_center.x-(1/2)*width,intersection_center.y-(1/2)*letter_thickness)
+        cornor2=rg.Point(intersection_center.x+(1/2)*width,intersection_center.y+(1/2)*letter_thickness)
+        self.h_rect=rg.Rectangle(cornor1,cornor2)
+        cornor3=rg.Point(intersection_center.x-(1/2)*letter_thickness,intersection_center.y+(1/2)*letter_thickness)
+        cornor4=rg.Point(intersection_center.x+(1/2)*letter_thickness,intersection_center.y+(1/2)*letter_thickness+height)
+        self.v_vect=rg.Rectangle()
         """
         *** See   dimensions.pdf   to understand the following! ***
 
@@ -162,7 +168,7 @@ class CapitalT(object):
           :type letter_thickness:    int
         """
         # ---------------------------------------------------------------------
-        # TODO: 3.
+        # DONE: 3.
         #   READ the above specification, including the Example.
         #   Implement this method, using the instance variables
         #      h_rect
@@ -172,6 +178,9 @@ class CapitalT(object):
         # ---------------------------------------------------------------------
 
     def attach_to(self, window):
+        self.h_rect.attach_to(window)
+        self.v_vect.attach_to(window)
+        window.render()
         """
         What comes in:
            -- self
@@ -190,7 +199,7 @@ class CapitalT(object):
           :type window: rg.RoseWindow
         """
         # ---------------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
